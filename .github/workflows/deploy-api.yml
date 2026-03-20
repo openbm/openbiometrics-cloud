@@ -1,4 +1,4 @@
-name: Deploy API
+name: Deploy SaaS API
 
 on:
   push:
@@ -14,10 +14,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-
-      - name: Deploy to Fly.io
-        working-directory: api
-        run: flyctl deploy --remote-only
-        env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: root
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd /opt/openbiometrics-cloud
+            git pull origin main
+            cd api
+            source .venv/bin/activate
+            pip install -r requirements.txt -q
+            systemctl restart openbiometrics-saas
+            sleep 2
+            curl -sf http://127.0.0.1:8600/health > /dev/null && echo "Deploy OK" || echo "Deploy FAILED"

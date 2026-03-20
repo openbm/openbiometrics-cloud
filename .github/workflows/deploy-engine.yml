@@ -1,0 +1,24 @@
+name: Deploy Engine
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy engine update to server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: root
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd /opt/openbiometrics
+            git pull origin main
+            source .venv/bin/activate
+            pip install -e engine/ -q
+            systemctl restart openbiometrics
+            sleep 5
+            curl -sf http://127.0.0.1:8500/api/v1/health > /dev/null && echo "Engine deploy OK" || echo "Engine deploy FAILED"
