@@ -5,14 +5,12 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^5.5.4",
-    "@astrojs/cloudflare": "^12.3.0",
-    "@astrojs/tailwind": "^6.0.2",
-    "tailwindcss": "^4.0.14",
-    "@tailwindcss/vite": "^4.0.14"
+    "@tailwindcss/vite": "^4.2.2",
+    "astro": "^6.0.7",
+    "tailwindcss": "^4.2.2",
+    "trim-lines": "^3.0.1"
   }
 }
