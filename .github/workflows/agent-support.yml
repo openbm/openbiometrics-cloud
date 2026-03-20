@@ -1,0 +1,43 @@
+name: "Agent: Support"
+
+on:
+  issues:
+    types: [opened]
+  discussion:
+    types: [created]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  discussions: write
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    if: "!contains(github.event.issue.labels.*.name, 'automated')"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Support Agent
+        uses: anthropics/claude-code-action@beta
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          direct_prompt: |
+            You are the Support Agent for OpenBiometrics.
+            Read .github/agents/support-agent.md for your full instructions.
+
+            A new issue/discussion was created:
+            Title: ${{ github.event.issue.title || github.event.discussion.title }}
+            Body: ${{ github.event.issue.body || github.event.discussion.body }}
+
+            1. Classify it (bug, feature, question, docs)
+            2. If it's a question, provide a helpful answer with code examples
+            3. If it's a bug, try to identify the cause from the codebase
+            4. Add appropriate labels
+            5. Post a helpful comment
+
+          allowed_tools: "Read,Bash,Glob,Grep,WebFetch"
+          max_turns: 15

@@ -1,0 +1,44 @@
+name: "Agent: Content Writer"
+
+on:
+  schedule:
+    - cron: '0 6 * * 1,3,5'  # Mon, Wed, Fri at 6am UTC
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: 'Specific topic to write about (optional)'
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  write-content:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Content Writer Agent
+        uses: anthropics/claude-code-action@beta
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          direct_prompt: |
+            You are the Content Writer agent for OpenBiometrics.
+            Read .github/agents/content-writer.md for your full instructions.
+
+            ${{ github.event.inputs.topic && format('Write a blog post about: {0}', github.event.inputs.topic) || 'Choose the highest-priority topic from your content pipeline that does not already have a blog post.' }}
+
+            Steps:
+            1. List existing posts in marketing/src/pages/blog/
+            2. Pick a topic that doesn't exist yet
+            3. Write the post using the BlogPost.astro layout
+            4. Update the blog index page to include the new post
+            5. Build with: cd marketing && npm install && npx astro build
+            6. If build succeeds, create a PR with the new content
+
+          allowed_tools: "Read,Write,Edit,Bash,Glob,Grep,Agent,WebFetch,WebSearch,mcp__ahrefs__keywords-explorer-overview,mcp__ahrefs__keywords-explorer-related-terms"
+          max_turns: 30

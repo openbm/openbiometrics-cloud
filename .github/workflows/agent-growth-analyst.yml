@@ -1,0 +1,38 @@
+name: "Agent: Growth Analyst"
+
+on:
+  schedule:
+    - cron: '0 8 * * 1'  # Monday 8am UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  analyze-growth:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Growth Analyst Agent
+        uses: anthropics/claude-code-action@beta
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          direct_prompt: |
+            You are the Growth Analyst agent for OpenBiometrics.
+            Read .github/agents/growth-analyst.md for your full instructions.
+
+            Create a weekly growth report. Analyze:
+            1. SEO performance using Ahrefs (site: openbiometrics.dev)
+            2. Keyword rankings and opportunities
+            3. Competitor movements
+            4. Content performance
+            5. Actionable recommendations
+
+            Create a GitHub Issue with your report titled "Weekly Growth Report — $(date +%Y-%m-%d)"
+
+          allowed_tools: "Read,Bash,Glob,Grep,WebFetch,WebSearch,mcp__ahrefs__site-explorer-organic-keywords,mcp__ahrefs__site-explorer-metrics,mcp__ahrefs__keywords-explorer-overview,mcp__ahrefs__keywords-explorer-related-terms,mcp__ahrefs__site-explorer-organic-competitors"
+          max_turns: 20
