@@ -15,9 +15,8 @@ if settings.stripe_secret_key:
     stripe.api_key = settings.stripe_secret_key
 
 PLAN_PRICES = {
-    "developer": "price_developer_monthly",  # Replace with real Stripe price IDs
-    "pro": "price_pro_monthly",
-    "enterprise": "price_enterprise_monthly",
+    "developer": "price_1TD7JwK7jmYyavFcqUnw2f7v",
+    "pro": "price_1TD7JxK7jmYyavFczoFAJhsT",
 }
 
 

@@ -92,18 +92,6 @@ async def signup(req: SignupRequest, db: AsyncSession = Depends(get_db)):
         company=req.company,
     )
     db.add(tenant)
-    await db.flush()
-
-    # Create a default test API key
-    raw_key = generate_api_key("test")
-    api_key = ApiKey(
-        tenant_id=tenant.id,
-        key_hash=hash_api_key(raw_key),
-        key_prefix=raw_key[:12],
-        name="Default (test)",
-        environment="test",
-    )
-    db.add(api_key)
     await db.commit()
 
     token = create_access_token(tenant.id)
