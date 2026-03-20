@@ -18,10 +18,11 @@ import '../styles/global.css';
       </a>
       <div class="hidden items-center gap-8 md:flex">
         <a href="#features" class="text-sm text-gray-400 transition hover:text-white">Features</a>
-        <a href="#code" class="text-sm text-gray-400 transition hover:text-white">Docs</a>
+        <a href="/demos" class="text-sm text-gray-400 transition hover:text-white">Demos</a>
+        <a href="/use-cases" class="text-sm text-gray-400 transition hover:text-white">Use Cases</a>
         <a href="#pricing" class="text-sm text-gray-400 transition hover:text-white">Pricing</a>
+        <a href="https://docs.openbiometrics.dev" target="_blank" class="text-sm text-gray-400 transition hover:text-white">Docs</a>
         <a href="https://github.com/drinkredwine/openbiometrics" target="_blank" class="text-sm text-gray-400 transition hover:text-white">GitHub</a>
-        <a href="https://drinkredwine.github.io/openbiometrics/" target="_blank" class="text-sm text-gray-400 transition hover:text-white">Docs</a>
       </div>
       <div class="flex items-center gap-3">
         <a href="https://app.openbiometrics.dev" class="hidden rounded-lg border border-white/10 px-4 py-2 text-sm font-medium text-gray-300 transition hover:border-white/20 hover:text-white sm:block">Sign in</a>
@@ -43,7 +44,7 @@ import '../styles/global.css';
         <!-- Badge -->
         <a href="https://github.com/drinkredwine/openbiometrics" target="_blank" class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-gray-300 transition hover:border-indigo-500/30 hover:bg-indigo-500/5">
           <span class="inline-block h-2 w-2 rounded-full bg-emerald-400"></span>
-          Open source &mdash; Apache 2.0 License
+          Open source &mdash; MIT License
           <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </a>
 
@@ -62,7 +63,7 @@ import '../styles/global.css';
             Start for Free
             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
-          <a href="https://drinkredwine.github.io/openbiometrics/" target="_blank" class="inline-flex items-center gap-2 rounded-xl border border-white/10 px-6 py-3 text-base font-semibold text-gray-300 transition hover:border-white/20 hover:text-white">
+          <a href="https://docs.openbiometrics.dev" target="_blank" class="inline-flex items-center gap-2 rounded-xl border border-white/10 px-6 py-3 text-base font-semibold text-gray-300 transition hover:border-white/20 hover:text-white">
             Read the Docs
           </a>
         </div>
@@ -174,6 +175,115 @@ import '../styles/global.css';
           <h3 class="mt-4 text-lg font-semibold">Watchlists &amp; 1:N Search</h3>
           <p class="mt-2 text-sm leading-relaxed text-gray-400">Enroll faces into watchlists and perform 1:N identification at scale. FAISS-powered vector search for sub-millisecond matching.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- See it in action -->
+  <section id="demos" class="border-t border-white/5 bg-[#0d0d0d] py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-semibold uppercase tracking-widest text-indigo-400">Live Demos</p>
+        <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">See it in action</h2>
+        <p class="mt-4 text-lg text-gray-400">Try our interactive demos. No sign-up required.</p>
+      </div>
+
+      <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <a href="https://demo-kyc.openbiometrics.dev" target="_blank" class="group rounded-2xl border border-white/5 bg-[#111111] p-8 transition hover:border-indigo-500/20 hover:bg-[#131313]">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-400">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold group-hover:text-indigo-400">KYC Onboarding</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-400">Verify customer identity with document scan, selfie, and liveness check.</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-indigo-400 opacity-0 transition group-hover:opacity-100">Try it live <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+        </a>
+
+        <a href="https://demo-2fa.openbiometrics.dev" target="_blank" class="group rounded-2xl border border-white/5 bg-[#111111] p-8 transition hover:border-emerald-500/20 hover:bg-[#131313]">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold group-hover:text-emerald-400">Face 2FA</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-400">Add face verification as a second factor to any login flow.</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-emerald-400 opacity-0 transition group-hover:opacity-100">Try it live <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+        </a>
+
+        <a href="https://demo-age.openbiometrics.dev" target="_blank" class="group rounded-2xl border border-white/5 bg-[#111111] p-8 transition hover:border-pink-500/20 hover:bg-[#131313]">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-pink-500/10 text-pink-400">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold group-hover:text-pink-400">Age Verification</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-400">Verify age compliance with a single selfie.</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-pink-400 opacity-0 transition group-hover:opacity-100">Try it live <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+        </a>
+
+        <a href="https://demo-visitors.openbiometrics.dev" target="_blank" class="group rounded-2xl border border-white/5 bg-[#111111] p-8 transition hover:border-amber-500/20 hover:bg-[#131313]">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-500/10 text-amber-400">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold group-hover:text-amber-400">Visitor Management</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-400">Check in visitors with face recognition.</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-amber-400 opacity-0 transition group-hover:opacity-100">Try it live <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+        </a>
+
+        <a href="https://demo-surveillance.openbiometrics.dev" target="_blank" class="group rounded-2xl border border-white/5 bg-[#111111] p-8 transition hover:border-cyan-500/20 hover:bg-[#131313]">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold group-hover:text-cyan-400">Surveillance</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-400">Real-time face detection across camera feeds.</p>
+          <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-cyan-400 opacity-0 transition group-hover:opacity-100">Try it live <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></span>
+        </a>
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/demos" class="inline-flex items-center gap-2 text-sm font-medium text-indigo-400 transition hover:text-indigo-300">View all demos <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use Cases -->
+  <section id="use-cases" class="py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-semibold uppercase tracking-widest text-indigo-400">Use Cases</p>
+        <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Built for every industry</h2>
+        <p class="mt-4 text-lg text-gray-400">From fintech to retail, OpenBiometrics powers biometric workflows across sectors.</p>
+      </div>
+
+      <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <a href="/use-cases/identity-verification" class="group rounded-2xl border border-white/5 bg-[#111111] p-8 transition hover:border-indigo-500/20 hover:bg-[#131313]">
+          <h3 class="text-lg font-semibold group-hover:text-indigo-400">Identity Verification / KYC</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-400">Onboard customers with document scanning, face matching, and liveness detection. Built for banks, fintechs, and crypto exchanges.</p>
+        </a>
+
+        <a href="/use-cases/access-control" class="group rounded-2xl border border-white/5 bg-[#111111] p-8 transition hover:border-emerald-500/20 hover:bg-[#131313]">
+          <h3 class="text-lg font-semibold group-hover:text-emerald-400">Access Control</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-400">Secure physical spaces with face recognition. Offices, gyms, co-working spaces, and events. No badges or PINs needed.</p>
+        </a>
+
+        <a href="/use-cases/age-verification" class="group rounded-2xl border border-white/5 bg-[#111111] p-8 transition hover:border-pink-500/20 hover:bg-[#131313]">
+          <h3 class="text-lg font-semibold group-hover:text-pink-400">Age Verification</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-400">Comply with age-restriction regulations for alcohol, gambling, and age-gated content with a single selfie.</p>
+        </a>
+
+        <div class="group rounded-2xl border border-white/5 bg-[#111111] p-8 transition hover:border-amber-500/20 hover:bg-[#131313]">
+          <h3 class="text-lg font-semibold group-hover:text-amber-400">Time and Attendance</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-400">Replace manual timesheets and buddy punching with face-based clock-in. Accurate workforce management made simple.</p>
+        </div>
+
+        <div class="group rounded-2xl border border-white/5 bg-[#111111] p-8 transition hover:border-cyan-500/20 hover:bg-[#131313]">
+          <h3 class="text-lg font-semibold group-hover:text-cyan-400">Smart Retail</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-400">Customer analytics, foot traffic insights, and VIP recognition. Personalize the shopping experience at scale.</p>
+        </div>
+
+        <div class="group rounded-2xl border border-white/5 bg-[#111111] p-8 transition hover:border-violet-500/20 hover:bg-[#131313]">
+          <h3 class="text-lg font-semibold group-hover:text-violet-400">Law Enforcement</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-400">Watchlist alerting and person-of-interest identification across camera networks. Real-time notifications on matches.</p>
+        </div>
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="/use-cases" class="inline-flex items-center gap-2 text-sm font-medium text-indigo-400 transition hover:text-indigo-300">View all use cases <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
       </div>
     </div>
   </section>
@@ -443,7 +553,7 @@ import '../styles/global.css';
               <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
               Star on GitHub
             </a>
-            <a href="https://drinkredwine.github.io/openbiometrics/" target="_blank" class="inline-flex items-center gap-2 rounded-xl border border-white/10 px-6 py-3 text-base font-semibold text-gray-300 transition hover:border-white/20 hover:text-white">
+            <a href="https://docs.openbiometrics.dev" target="_blank" class="inline-flex items-center gap-2 rounded-xl border border-white/10 px-6 py-3 text-base font-semibold text-gray-300 transition hover:border-white/20 hover:text-white">
               Read Documentation
             </a>
           </div>
@@ -471,8 +581,9 @@ import '../styles/global.css';
           <h4 class="text-sm font-semibold text-gray-300">Product</h4>
           <ul class="mt-3 space-y-2 text-sm text-gray-500">
             <li><a href="#features" class="transition hover:text-gray-300">Features</a></li>
+            <li><a href="/demos" class="transition hover:text-gray-300">Demos</a></li>
+            <li><a href="/use-cases" class="transition hover:text-gray-300">Use Cases</a></li>
             <li><a href="#pricing" class="transition hover:text-gray-300">Pricing</a></li>
-            <li><a href="https://drinkredwine.github.io/openbiometrics/" class="transition hover:text-gray-300">Documentation</a></li>
             <li><a href="https://app.openbiometrics.dev" class="transition hover:text-gray-300">Dashboard</a></li>
           </ul>
         </div>
@@ -480,8 +591,8 @@ import '../styles/global.css';
           <h4 class="text-sm font-semibold text-gray-300">Developers</h4>
           <ul class="mt-3 space-y-2 text-sm text-gray-500">
             <li><a href="https://github.com/drinkredwine/openbiometrics" class="transition hover:text-gray-300">GitHub</a></li>
+            <li><a href="https://docs.openbiometrics.dev" class="transition hover:text-gray-300">Documentation</a></li>
             <li><a href="https://api.openbiometrics.dev/docs" class="transition hover:text-gray-300">API Reference</a></li>
-            <li><a href="https://drinkredwine.github.io/openbiometrics/" class="transition hover:text-gray-300">Guides</a></li>
             <li><a href="https://github.com/drinkredwine/openbiometrics/issues" class="transition hover:text-gray-300">Report a Bug</a></li>
           </ul>
         </div>
