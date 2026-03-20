@@ -1,0 +1,535 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+---
+
+<Layout title="OpenBiometrics — Open-Source Biometric Platform">
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-[#0a0a0a]/80 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+      <a href="/" class="flex items-center gap-2.5">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" class="h-8 w-8">
+          <rect width="32" height="32" rx="8" fill="#6366f1"/>
+          <circle cx="16" cy="13" r="5" stroke="white" stroke-width="2" fill="none"/>
+          <path d="M8 26c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span class="text-lg font-semibold tracking-tight">OpenBiometrics</span>
+      </a>
+      <div class="hidden items-center gap-8 md:flex">
+        <a href="#features" class="text-sm text-gray-400 transition hover:text-white">Features</a>
+        <a href="#code" class="text-sm text-gray-400 transition hover:text-white">Docs</a>
+        <a href="#pricing" class="text-sm text-gray-400 transition hover:text-white">Pricing</a>
+        <a href="https://github.com/drinkredwine/openbiometrics" target="_blank" class="text-sm text-gray-400 transition hover:text-white">GitHub</a>
+        <a href="https://drinkredwine.github.io/openbiometrics/" target="_blank" class="text-sm text-gray-400 transition hover:text-white">Docs</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="https://app.openbiometrics.dev" class="hidden rounded-lg border border-white/10 px-4 py-2 text-sm font-medium text-gray-300 transition hover:border-white/20 hover:text-white sm:block">Sign in</a>
+        <a href="https://app.openbiometrics.dev" class="rounded-lg bg-indigo-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-indigo-400">Get API Key</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-32">
+    <!-- Background gradient -->
+    <div class="pointer-events-none absolute inset-0">
+      <div class="absolute top-0 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-indigo-500/10 blur-[120px]"></div>
+      <div class="absolute top-40 right-0 h-[400px] w-[400px] rounded-full bg-purple-500/8 blur-[100px]"></div>
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-6">
+      <div class="mx-auto max-w-3xl text-center">
+        <!-- Badge -->
+        <a href="https://github.com/drinkredwine/openbiometrics" target="_blank" class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-gray-300 transition hover:border-indigo-500/30 hover:bg-indigo-500/5">
+          <span class="inline-block h-2 w-2 rounded-full bg-emerald-400"></span>
+          Open source &mdash; Apache 2.0 License
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+
+        <h1 class="mt-4 text-5xl font-extrabold leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl">
+          Biometrics as
+          <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">an API</span>
+        </h1>
+
+        <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-gray-400 sm:text-xl">
+          Face recognition, liveness detection, document processing, and identity verification.
+          Production-ready. Self-hostable. One API call away.
+        </p>
+
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="https://app.openbiometrics.dev" class="inline-flex items-center gap-2 rounded-xl bg-indigo-500 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-indigo-500/25 transition hover:bg-indigo-400 hover:shadow-indigo-400/25">
+            Start for Free
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="https://drinkredwine.github.io/openbiometrics/" target="_blank" class="inline-flex items-center gap-2 rounded-xl border border-white/10 px-6 py-3 text-base font-semibold text-gray-300 transition hover:border-white/20 hover:text-white">
+            Read the Docs
+          </a>
+        </div>
+
+        <!-- Code preview -->
+        <div class="mx-auto mt-16 max-w-2xl">
+          <div class="rounded-xl border border-white/10 bg-[#111111] shadow-2xl">
+            <div class="flex items-center gap-2 border-b border-white/5 px-4 py-3">
+              <div class="h-3 w-3 rounded-full bg-red-500/60"></div>
+              <div class="h-3 w-3 rounded-full bg-yellow-500/60"></div>
+              <div class="h-3 w-3 rounded-full bg-green-500/60"></div>
+              <span class="ml-3 text-xs text-gray-500">Quick start</span>
+            </div>
+            <pre class="overflow-x-auto p-6 text-left text-sm leading-relaxed" style="font-family: 'JetBrains Mono', monospace;"><code><span class="text-gray-500">// Detect faces in under 3 lines</span>
+<span class="text-purple-400">import</span> <span class="text-gray-100">OpenBiometrics</span> <span class="text-purple-400">from</span> <span class="text-emerald-400">'openbiometrics'</span>
+
+<span class="text-purple-400">const</span> <span class="text-gray-100">ob</span> = <span class="text-purple-400">new</span> <span class="text-blue-400">OpenBiometrics</span>(<span class="text-emerald-400">'ob_live_...'</span>)
+<span class="text-purple-400">const</span> <span class="text-gray-100">result</span> = <span class="text-purple-400">await</span> <span class="text-gray-100">ob</span>.<span class="text-blue-400">faces</span>.<span class="text-yellow-400">detect</span>(<span class="text-emerald-400">'photo.jpg'</span>)
+
+<span class="text-gray-500">// { faces: [{ age: 28, quality: 0.95, liveness: 0.99 }] }</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trusted by / Stats bar -->
+  <section class="border-y border-white/5 bg-[#0d0d0d]">
+    <div class="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 py-12 sm:grid-cols-4">
+      <div class="text-center">
+        <div class="text-3xl font-bold text-white">99.86%</div>
+        <div class="mt-1 text-sm text-gray-500">Recognition Accuracy (LFW)</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-bold text-white">&lt;50ms</div>
+        <div class="mt-1 text-sm text-gray-500">Detection Latency</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-bold text-white">6</div>
+        <div class="mt-1 text-sm text-gray-500">API Modules</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-bold text-white">ARM + GPU</div>
+        <div class="mt-1 text-sm text-gray-500">Hardware Support</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-semibold uppercase tracking-widest text-indigo-400">Capabilities</p>
+        <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Everything you need for biometric identity</h2>
+        <p class="mt-4 text-lg text-gray-400">One platform, six powerful modules. Each accessible through a simple REST API.</p>
+      </div>
+
+      <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- Face Detection -->
+        <div class="group rounded-2xl border border-white/5 bg-[#111111] p-8 transition hover:border-indigo-500/20 hover:bg-[#131313]">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-400">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Face Detection</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-400">Detect faces with quality scores, age estimation, and demographic data. Powered by SCRFD for state-of-the-art accuracy.</p>
+        </div>
+
+        <!-- Face Verification -->
+        <div class="group rounded-2xl border border-white/5 bg-[#111111] p-8 transition hover:border-indigo-500/20 hover:bg-[#131313]">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Face Verification</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-400">1:1 identity verification. Compare two faces and get a similarity score. ArcFace embeddings with 99.86% accuracy on LFW.</p>
+        </div>
+
+        <!-- Liveness Detection -->
+        <div class="group rounded-2xl border border-white/5 bg-[#111111] p-8 transition hover:border-indigo-500/20 hover:bg-[#131313]">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-pink-500/10 text-pink-400">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Liveness Detection</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-400">Passive and active anti-spoofing. Detect printed photos, screen replays, and 3D masks. Challenge-response for high-security flows.</p>
+        </div>
+
+        <!-- Document Processing -->
+        <div class="group rounded-2xl border border-white/5 bg-[#111111] p-8 transition hover:border-indigo-500/20 hover:bg-[#131313]">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-500/10 text-amber-400">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Document Processing</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-400">OCR, MRZ parsing, and document classification. Passports, IDs, and driver's licenses. Extract structured data instantly.</p>
+        </div>
+
+        <!-- Video Analytics -->
+        <div class="group rounded-2xl border border-white/5 bg-[#111111] p-8 transition hover:border-indigo-500/20 hover:bg-[#131313]">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Video Analytics</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-400">Real-time face tracking across multiple camera feeds. Connect RTSP streams and get instant webhooks on recognition events.</p>
+        </div>
+
+        <!-- Watchlists -->
+        <div class="group rounded-2xl border border-white/5 bg-[#111111] p-8 transition hover:border-indigo-500/20 hover:bg-[#131313]">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-violet-500/10 text-violet-400">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <h3 class="mt-4 text-lg font-semibold">Watchlists &amp; 1:N Search</h3>
+          <p class="mt-2 text-sm leading-relaxed text-gray-400">Enroll faces into watchlists and perform 1:N identification at scale. FAISS-powered vector search for sub-millisecond matching.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Code Examples -->
+  <section id="code" class="border-t border-white/5 bg-[#0d0d0d] py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-semibold uppercase tracking-widest text-indigo-400">Developer Experience</p>
+        <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Ship biometrics in minutes, not months</h2>
+        <p class="mt-4 text-lg text-gray-400">Clean SDKs for Node.js and Python. Or use cURL. Your call.</p>
+      </div>
+
+      <div class="mx-auto mt-12 max-w-3xl">
+        <!-- Tab buttons -->
+        <div class="flex gap-1 rounded-xl border border-white/10 bg-[#111111] p-1" id="code-tabs">
+          <button data-tab="nodejs" class="flex-1 rounded-lg bg-white/10 px-4 py-2 text-sm font-medium text-white transition">Node.js</button>
+          <button data-tab="python" class="flex-1 rounded-lg px-4 py-2 text-sm font-medium text-gray-400 transition hover:text-white">Python</button>
+          <button data-tab="curl" class="flex-1 rounded-lg px-4 py-2 text-sm font-medium text-gray-400 transition hover:text-white">cURL</button>
+        </div>
+
+        <!-- Node.js -->
+        <div id="panel-nodejs" class="mt-4 rounded-xl border border-white/10 bg-[#111111]">
+          <div class="flex items-center justify-between border-b border-white/5 px-4 py-3">
+            <span class="text-xs text-gray-500">detect.js</span>
+          </div>
+          <pre class="overflow-x-auto p-6 text-sm leading-relaxed" style="font-family: 'JetBrains Mono', monospace;"><code><span class="text-purple-400">import</span> <span class="text-gray-100">OpenBiometrics</span> <span class="text-purple-400">from</span> <span class="text-emerald-400">'openbiometrics'</span>
+
+<span class="text-purple-400">const</span> <span class="text-gray-100">ob</span> = <span class="text-purple-400">new</span> <span class="text-blue-400">OpenBiometrics</span>(<span class="text-emerald-400">'ob_live_your_api_key'</span>)
+
+<span class="text-gray-500">// Detect faces in an image</span>
+<span class="text-purple-400">const</span> <span class="text-gray-100">detection</span> = <span class="text-purple-400">await</span> <span class="text-gray-100">ob</span>.<span class="text-blue-400">faces</span>.<span class="text-yellow-400">detect</span>(<span class="text-emerald-400">'./selfie.jpg'</span>)
+<span class="text-gray-100">console</span>.<span class="text-yellow-400">log</span>(<span class="text-gray-100">detection</span>.<span class="text-blue-400">faces</span>[<span class="text-amber-400">0</span>].<span class="text-blue-400">quality</span>) <span class="text-gray-500">// 0.95</span>
+
+<span class="text-gray-500">// Verify two faces match</span>
+<span class="text-purple-400">const</span> <span class="text-gray-100">match</span> = <span class="text-purple-400">await</span> <span class="text-gray-100">ob</span>.<span class="text-blue-400">faces</span>.<span class="text-yellow-400">verify</span>(<span class="text-emerald-400">'./id_photo.jpg'</span>, <span class="text-emerald-400">'./selfie.jpg'</span>)
+<span class="text-gray-100">console</span>.<span class="text-yellow-400">log</span>(<span class="text-gray-100">match</span>.<span class="text-blue-400">is_match</span>)    <span class="text-gray-500">// true</span>
+<span class="text-gray-100">console</span>.<span class="text-yellow-400">log</span>(<span class="text-gray-100">match</span>.<span class="text-blue-400">similarity</span>) <span class="text-gray-500">// 0.89</span>
+
+<span class="text-gray-500">// Scan a passport</span>
+<span class="text-purple-400">const</span> <span class="text-gray-100">doc</span> = <span class="text-purple-400">await</span> <span class="text-gray-100">ob</span>.<span class="text-blue-400">documents</span>.<span class="text-yellow-400">scan</span>(<span class="text-emerald-400">'./passport.jpg'</span>)
+<span class="text-gray-100">console</span>.<span class="text-yellow-400">log</span>(<span class="text-gray-100">doc</span>.<span class="text-blue-400">mrz</span>.<span class="text-blue-400">name</span>)      <span class="text-gray-500">// "SMITH, JOHN"</span></code></pre>
+        </div>
+
+        <!-- Python -->
+        <div id="panel-python" class="mt-4 hidden rounded-xl border border-white/10 bg-[#111111]">
+          <div class="flex items-center justify-between border-b border-white/5 px-4 py-3">
+            <span class="text-xs text-gray-500">detect.py</span>
+          </div>
+          <pre class="overflow-x-auto p-6 text-sm leading-relaxed" style="font-family: 'JetBrains Mono', monospace;"><code><span class="text-purple-400">from</span> <span class="text-gray-100">openbiometrics</span> <span class="text-purple-400">import</span> <span class="text-gray-100">OpenBiometrics</span>
+
+<span class="text-gray-100">ob</span> = <span class="text-blue-400">OpenBiometrics</span>(<span class="text-emerald-400">"ob_live_your_api_key"</span>)
+
+<span class="text-gray-500"># Detect faces in an image</span>
+<span class="text-gray-100">detection</span> = <span class="text-gray-100">ob</span>.<span class="text-blue-400">faces</span>.<span class="text-yellow-400">detect</span>(<span class="text-emerald-400">"selfie.jpg"</span>)
+<span class="text-yellow-400">print</span>(<span class="text-gray-100">detection</span>[<span class="text-emerald-400">"faces"</span>][<span class="text-amber-400">0</span>][<span class="text-emerald-400">"quality"</span>])  <span class="text-gray-500"># 0.95</span>
+
+<span class="text-gray-500"># Verify two faces match</span>
+<span class="text-gray-100">match</span> = <span class="text-gray-100">ob</span>.<span class="text-blue-400">faces</span>.<span class="text-yellow-400">verify</span>(<span class="text-emerald-400">"id_photo.jpg"</span>, <span class="text-emerald-400">"selfie.jpg"</span>)
+<span class="text-yellow-400">print</span>(<span class="text-gray-100">match</span>[<span class="text-emerald-400">"is_match"</span>])     <span class="text-gray-500"># True</span>
+<span class="text-yellow-400">print</span>(<span class="text-gray-100">match</span>[<span class="text-emerald-400">"similarity"</span>])  <span class="text-gray-500"># 0.89</span>
+
+<span class="text-gray-500"># Scan a passport</span>
+<span class="text-gray-100">doc</span> = <span class="text-gray-100">ob</span>.<span class="text-blue-400">documents</span>.<span class="text-yellow-400">scan</span>(<span class="text-emerald-400">"passport.jpg"</span>)
+<span class="text-yellow-400">print</span>(<span class="text-gray-100">doc</span>[<span class="text-emerald-400">"mrz"</span>][<span class="text-emerald-400">"name"</span>])   <span class="text-gray-500"># "SMITH, JOHN"</span></code></pre>
+        </div>
+
+        <!-- cURL -->
+        <div id="panel-curl" class="mt-4 hidden rounded-xl border border-white/10 bg-[#111111]">
+          <div class="flex items-center justify-between border-b border-white/5 px-4 py-3">
+            <span class="text-xs text-gray-500">terminal</span>
+          </div>
+          <pre class="overflow-x-auto p-6 text-sm leading-relaxed" style="font-family: 'JetBrains Mono', monospace;"><code><span class="text-gray-500"># Detect faces</span>
+<span class="text-yellow-400">curl</span> <span class="text-emerald-400">-X POST https://api.openbiometrics.dev/api/v1/detect</span> \
+  <span class="text-purple-400">-H</span> <span class="text-emerald-400">"Authorization: Bearer ob_live_your_api_key"</span> \
+  <span class="text-purple-400">-F</span> <span class="text-emerald-400">"image=@selfie.jpg"</span>
+
+<span class="text-gray-500"># Verify two faces</span>
+<span class="text-yellow-400">curl</span> <span class="text-emerald-400">-X POST https://api.openbiometrics.dev/api/v1/verify</span> \
+  <span class="text-purple-400">-H</span> <span class="text-emerald-400">"Authorization: Bearer ob_live_your_api_key"</span> \
+  <span class="text-purple-400">-F</span> <span class="text-emerald-400">"image1=@id_photo.jpg"</span> \
+  <span class="text-purple-400">-F</span> <span class="text-emerald-400">"image2=@selfie.jpg"</span>
+
+<span class="text-gray-500"># Scan a document</span>
+<span class="text-yellow-400">curl</span> <span class="text-emerald-400">-X POST https://api.openbiometrics.dev/api/v1/documents/scan</span> \
+  <span class="text-purple-400">-H</span> <span class="text-emerald-400">"Authorization: Bearer ob_live_your_api_key"</span> \
+  <span class="text-purple-400">-F</span> <span class="text-emerald-400">"image=@passport.jpg"</span></code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-semibold uppercase tracking-widest text-indigo-400">Architecture</p>
+        <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Cloud or self-hosted. Your infrastructure, your rules.</h2>
+      </div>
+
+      <div class="mt-16 grid gap-8 sm:grid-cols-3">
+        <div class="relative rounded-2xl border border-white/5 bg-[#111111] p-8">
+          <div class="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-500/20 text-sm font-bold text-indigo-400">1</div>
+          <h3 class="mt-4 text-lg font-semibold">Get your API key</h3>
+          <p class="mt-2 text-sm text-gray-400">Sign up, grab an API key from the dashboard. Start making calls in seconds with our SDKs or plain HTTP.</p>
+        </div>
+        <div class="relative rounded-2xl border border-white/5 bg-[#111111] p-8">
+          <div class="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-500/20 text-sm font-bold text-indigo-400">2</div>
+          <h3 class="mt-4 text-lg font-semibold">Call the API</h3>
+          <p class="mt-2 text-sm text-gray-400">Send images to our endpoints. Face detection, verification, liveness checks, document scanning -- all one POST away.</p>
+        </div>
+        <div class="relative rounded-2xl border border-white/5 bg-[#111111] p-8">
+          <div class="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-500/20 text-sm font-bold text-indigo-400">3</div>
+          <h3 class="mt-4 text-lg font-semibold">Scale with confidence</h3>
+          <p class="mt-2 text-sm text-gray-400">Monitor usage in real-time from the dashboard. Auto-scaling infrastructure handles peaks. Or self-host on your own metal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing" class="border-t border-white/5 bg-[#0d0d0d] py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="text-sm font-semibold uppercase tracking-widest text-indigo-400">Pricing</p>
+        <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">Simple, predictable pricing</h2>
+        <p class="mt-4 text-lg text-gray-400">Start free. Scale when you're ready. Self-host if you want.</p>
+      </div>
+
+      <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Free -->
+        <div class="rounded-2xl border border-white/5 bg-[#111111] p-8">
+          <h3 class="text-lg font-semibold text-gray-300">Free</h3>
+          <p class="mt-1 text-sm text-gray-500">Self-hosted, forever free</p>
+          <div class="mt-6">
+            <span class="text-4xl font-bold">$0</span>
+            <span class="text-gray-500">/mo</span>
+          </div>
+          <ul class="mt-8 space-y-3 text-sm text-gray-400">
+            <li class="flex items-center gap-2">
+              <svg class="h-4 w-4 shrink-0 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Full engine, all features
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="h-4 w-4 shrink-0 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Docker / ARM support
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="h-4 w-4 shrink-0 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Community support
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="h-4 w-4 shrink-0 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              100 cloud API calls/mo
+            </li>
+          </ul>
+          <a href="https://github.com/drinkredwine/openbiometrics" target="_blank" class="mt-8 block rounded-lg border border-white/10 py-2.5 text-center text-sm font-medium text-gray-300 transition hover:border-white/20 hover:text-white">View on GitHub</a>
+        </div>
+
+        <!-- Developer -->
+        <div class="rounded-2xl border border-indigo-500/30 bg-[#111111] p-8 ring-1 ring-indigo-500/20">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-white">Developer</h3>
+            <span class="rounded-full bg-indigo-500/10 px-3 py-1 text-xs font-medium text-indigo-400">Popular</span>
+          </div>
+          <p class="mt-1 text-sm text-gray-500">For startups and side projects</p>
+          <div class="mt-6">
+            <span class="text-4xl font-bold">$29</span>
+            <span class="text-gray-500">/mo</span>
+          </div>
+          <ul class="mt-8 space-y-3 text-sm text-gray-400">
+            <li class="flex items-center gap-2">
+              <svg class="h-4 w-4 shrink-0 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              10,000 API calls/mo
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="h-4 w-4 shrink-0 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              All biometric modules
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="h-4 w-4 shrink-0 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Dashboard &amp; analytics
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="h-4 w-4 shrink-0 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Email support
+            </li>
+          </ul>
+          <a href="https://app.openbiometrics.dev" class="mt-8 block rounded-lg bg-indigo-500 py-2.5 text-center text-sm font-medium text-white transition hover:bg-indigo-400">Get Started</a>
+        </div>
+
+        <!-- Pro -->
+        <div class="rounded-2xl border border-white/5 bg-[#111111] p-8">
+          <h3 class="text-lg font-semibold text-gray-300">Pro</h3>
+          <p class="mt-1 text-sm text-gray-500">For scaling applications</p>
+          <div class="mt-6">
+            <span class="text-4xl font-bold">$99</span>
+            <span class="text-gray-500">/mo</span>
+          </div>
+          <ul class="mt-8 space-y-3 text-sm text-gray-400">
+            <li class="flex items-center gap-2">
+              <svg class="h-4 w-4 shrink-0 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              100,000 API calls/mo
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="h-4 w-4 shrink-0 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Higher rate limits
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="h-4 w-4 shrink-0 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Priority support
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="h-4 w-4 shrink-0 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Webhooks &amp; events
+            </li>
+          </ul>
+          <a href="https://app.openbiometrics.dev" class="mt-8 block rounded-lg border border-white/10 py-2.5 text-center text-sm font-medium text-gray-300 transition hover:border-white/20 hover:text-white">Get Started</a>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="rounded-2xl border border-white/5 bg-[#111111] p-8">
+          <h3 class="text-lg font-semibold text-gray-300">Enterprise</h3>
+          <p class="mt-1 text-sm text-gray-500">Custom deployment &amp; SLAs</p>
+          <div class="mt-6">
+            <span class="text-4xl font-bold">Custom</span>
+          </div>
+          <ul class="mt-8 space-y-3 text-sm text-gray-400">
+            <li class="flex items-center gap-2">
+              <svg class="h-4 w-4 shrink-0 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Unlimited API calls
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="h-4 w-4 shrink-0 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              Dedicated infrastructure
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="h-4 w-4 shrink-0 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              SLA &amp; on-premise option
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="h-4 w-4 shrink-0 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              24/7 dedicated support
+            </li>
+          </ul>
+          <a href="mailto:hello@openbiometrics.dev" class="mt-8 block rounded-lg border border-white/10 py-2.5 text-center text-sm font-medium text-gray-300 transition hover:border-white/20 hover:text-white">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Open Source Callout -->
+  <section class="py-24 sm:py-32">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-indigo-500/10 via-[#111111] to-purple-500/10 p-12 sm:p-16">
+        <div class="relative mx-auto max-w-2xl text-center">
+          <div class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5">
+            <svg class="h-8 w-8 text-gray-100" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </div>
+          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">100% Open Source</h2>
+          <p class="mt-4 text-lg leading-relaxed text-gray-400">
+            The entire biometric engine is open source. Inspect every model, audit every algorithm, deploy anywhere.
+            The cloud service is just the engine + multi-tenancy, billing, and managed infrastructure.
+          </p>
+          <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a href="https://github.com/drinkredwine/openbiometrics" target="_blank" class="inline-flex items-center gap-2 rounded-xl bg-white/10 px-6 py-3 text-base font-semibold text-white transition hover:bg-white/15">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              Star on GitHub
+            </a>
+            <a href="https://drinkredwine.github.io/openbiometrics/" target="_blank" class="inline-flex items-center gap-2 rounded-xl border border-white/10 px-6 py-3 text-base font-semibold text-gray-300 transition hover:border-white/20 hover:text-white">
+              Read Documentation
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/5 bg-[#0a0a0a]">
+    <div class="mx-auto max-w-7xl px-6 py-12">
+      <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <a href="/" class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" class="h-7 w-7">
+              <rect width="32" height="32" rx="8" fill="#6366f1"/>
+              <circle cx="16" cy="13" r="5" stroke="white" stroke-width="2" fill="none"/>
+              <path d="M8 26c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </svg>
+            <span class="font-semibold">OpenBiometrics</span>
+          </a>
+          <p class="mt-3 text-sm text-gray-500">Open-source biometric platform for developers.</p>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-gray-300">Product</h4>
+          <ul class="mt-3 space-y-2 text-sm text-gray-500">
+            <li><a href="#features" class="transition hover:text-gray-300">Features</a></li>
+            <li><a href="#pricing" class="transition hover:text-gray-300">Pricing</a></li>
+            <li><a href="https://drinkredwine.github.io/openbiometrics/" class="transition hover:text-gray-300">Documentation</a></li>
+            <li><a href="https://app.openbiometrics.dev" class="transition hover:text-gray-300">Dashboard</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-gray-300">Developers</h4>
+          <ul class="mt-3 space-y-2 text-sm text-gray-500">
+            <li><a href="https://github.com/drinkredwine/openbiometrics" class="transition hover:text-gray-300">GitHub</a></li>
+            <li><a href="https://api.openbiometrics.dev/docs" class="transition hover:text-gray-300">API Reference</a></li>
+            <li><a href="https://drinkredwine.github.io/openbiometrics/" class="transition hover:text-gray-300">Guides</a></li>
+            <li><a href="https://github.com/drinkredwine/openbiometrics/issues" class="transition hover:text-gray-300">Report a Bug</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-sm font-semibold text-gray-300">Company</h4>
+          <ul class="mt-3 space-y-2 text-sm text-gray-500">
+            <li><a href="mailto:hello@openbiometrics.dev" class="transition hover:text-gray-300">Contact</a></li>
+            <li><a href="#" class="transition hover:text-gray-300">Privacy Policy</a></li>
+            <li><a href="#" class="transition hover:text-gray-300">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 border-t border-white/5 pt-8 text-center text-sm text-gray-600">
+        &copy; 2026 OpenBiometrics. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Tab switching script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabs = document.querySelectorAll('#code-tabs button');
+      const panels = {
+        nodejs: document.getElementById('panel-nodejs'),
+        python: document.getElementById('panel-python'),
+        curl: document.getElementById('panel-curl'),
+      };
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const target = tab.getAttribute('data-tab');
+
+          // Update tab styles
+          tabs.forEach(t => {
+            t.classList.remove('bg-white/10', 'text-white');
+            t.classList.add('text-gray-400');
+          });
+          tab.classList.add('bg-white/10', 'text-white');
+          tab.classList.remove('text-gray-400');
+
+          // Show/hide panels
+          Object.entries(panels).forEach(([key, panel]) => {
+            if (panel) {
+              panel.classList.toggle('hidden', key !== target);
+            }
+          });
+        });
+      });
+    });
+  </script>
+</Layout>
