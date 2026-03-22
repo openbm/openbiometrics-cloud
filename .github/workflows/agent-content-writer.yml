@@ -25,16 +25,42 @@ jobs:
       - uses: anthropics/claude-code-action@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          mcp_config: |
+            {
+              "mcpServers": {
+                "ahrefs": {
+                  "type": "http",
+                  "url": "https://api.ahrefs.com/mcp/mcp",
+                  "headers": {
+                    "Authorization": "Bearer ${{ secrets.AHREFS_MCP_TOKEN }}"
+                  }
+                },
+                "search-console": {
+                  "command": "npx",
+                  "args": ["-y", "@anthropic-ai/google-search-console-mcp"],
+                  "env": {
+                    "GOOGLE_APPLICATION_CREDENTIALS_JSON": "${{ secrets.GOOGLE_CREDENTIALS_JSON }}",
+                    "SITE_URL": "sc-domain:openbiometrics.dev"
+                  }
+                }
+              }
+            }
           prompt: |
             You are the Content Writer agent for OpenBiometrics.
             Read .github/agents/content-writer.md for your full instructions.
 
+            You have access to:
+            - Ahrefs MCP: research keywords, check volumes, difficulty, competitors
+            - Google Search Console MCP: see what queries bring traffic, impressions, CTR
+
             ${{ github.event.inputs.topic && format('Write a blog post about: {0}', github.event.inputs.topic) || 'Choose the highest-priority topic from your content pipeline that does not already have a blog post.' }}
 
             Steps:
-            1. List existing posts in marketing/src/pages/blog/
-            2. Pick a topic that doesn't exist yet
-            3. Write the post using the BlogPost.astro layout
-            4. Update the blog index page to include the new post
-            5. Build with: cd marketing && npm install && npx astro build
-            6. If build succeeds, create a PR with the new content
+            1. Use Search Console to see current traffic and top queries
+            2. Use Ahrefs to research keyword opportunities (low KD, decent volume)
+            3. List existing posts in marketing/src/pages/blog/
+            4. Pick a topic that doesn't exist yet
+            5. Write the post using the BlogPost.astro layout
+            6. Update the blog index page to include the new post
+            7. Build with: cd marketing && npm install && npx astro build
+            8. If build succeeds, create a PR with the new content

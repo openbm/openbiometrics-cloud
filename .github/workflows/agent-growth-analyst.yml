@@ -20,12 +20,38 @@ jobs:
       - uses: anthropics/claude-code-action@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          mcp_config: |
+            {
+              "mcpServers": {
+                "ahrefs": {
+                  "type": "http",
+                  "url": "https://api.ahrefs.com/mcp/mcp",
+                  "headers": {
+                    "Authorization": "Bearer ${{ secrets.AHREFS_MCP_TOKEN }}"
+                  }
+                },
+                "search-console": {
+                  "command": "npx",
+                  "args": ["-y", "@anthropic-ai/google-search-console-mcp"],
+                  "env": {
+                    "GOOGLE_APPLICATION_CREDENTIALS_JSON": "${{ secrets.GOOGLE_CREDENTIALS_JSON }}",
+                    "SITE_URL": "sc-domain:openbiometrics.dev"
+                  }
+                }
+              }
+            }
           prompt: |
             You are the Growth Analyst agent for OpenBiometrics.
             Read .github/agents/growth-analyst.md for your full instructions.
 
-            Create a weekly growth report. Analyze:
-            1. Check GitHub stars, forks, issues for drinkredwine/openbiometrics
-            2. Check npm downloads for 'openbiometrics' package
-            3. Review which blog posts exist and suggest new topics
-            4. Create a GitHub Issue with your report titled "Weekly Growth Report"
+            You have access to:
+            - Ahrefs MCP: site explorer, keyword rankings, backlinks, competitors
+            - Google Search Console MCP: real search performance data
+
+            Create a weekly growth report:
+            1. Search Console: top queries, top pages, impressions trend, CTR
+            2. Ahrefs: organic keywords, domain rating, backlinks, competitor analysis
+            3. Content gap analysis: what keywords should we target next?
+            4. Recommendations: 3-5 actionable items
+
+            Create a GitHub Issue titled "Weekly Growth Report" with your findings.

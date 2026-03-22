@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "ahrefs": {
+      "type": "http",
+      "url": "https://api.ahrefs.com/mcp/mcp"
+    },
+    "search-console": {
+      "command": "node",
+      "args": ["/Users/dodo/mcp-servers/search-console/index.js"],
+      "env": {
+        "SITE_URL": "sc-domain:openbiometrics.dev"
+      }
+    }
+  }
+}
