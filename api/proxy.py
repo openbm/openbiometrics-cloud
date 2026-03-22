@@ -179,6 +179,16 @@ async def document_mrz(
 
 # ---------- Liveness endpoints ----------
 
+@router.get("/liveness/presets")
+async def list_liveness_presets(
+    request: Request,
+    auth: tuple[Tenant, ApiKey] = Depends(authenticate_api_key),
+    db: AsyncSession = Depends(get_db),
+):
+    tenant, api_key = auth
+    return await _proxy_request(request, "/liveness/presets", tenant, api_key, db)
+
+
 @router.post("/liveness/sessions")
 async def create_liveness_session(
     request: Request,
@@ -214,6 +224,17 @@ async def submit_liveness_frame(
         request, f"/liveness/sessions/{session_id}/frames", tenant, api_key, db,
         files={"frame": (frame.filename, frame_bytes, frame.content_type)},
     )
+
+
+@router.delete("/liveness/sessions/{session_id}")
+async def cancel_liveness_session(
+    request: Request,
+    session_id: str,
+    auth: tuple[Tenant, ApiKey] = Depends(authenticate_api_key),
+    db: AsyncSession = Depends(get_db),
+):
+    tenant, api_key = auth
+    return await _proxy_request(request, f"/liveness/sessions/{session_id}", tenant, api_key, db)
 
 
 # ---------- Watchlist endpoints ----------
@@ -258,7 +279,88 @@ async def remove_from_watchlist(
     return await _proxy_request(request, f"/watchlists/{name}/{identity_id}", tenant, api_key, db)
 
 
-# ---------- Health ----------
+# ---------- Admin endpoints ----------
+
+@router.get("/admin/health")
+async def admin_health(
+    request: Request,
+    auth: tuple[Tenant, ApiKey] = Depends(authenticate_api_key),
+    db: AsyncSession = Depends(get_db),
+):
+    tenant, api_key = auth
+    return await _proxy_request(request, "/admin/health", tenant, api_key, db)
+
+
+@router.get("/admin/models")
+async def admin_models(
+    request: Request,
+    auth: tuple[Tenant, ApiKey] = Depends(authenticate_api_key),
+    db: AsyncSession = Depends(get_db),
+):
+    tenant, api_key = auth
+    return await _proxy_request(request, "/admin/models", tenant, api_key, db)
+
+
+@router.get("/admin/config")
+async def admin_config(
+    request: Request,
+    auth: tuple[Tenant, ApiKey] = Depends(authenticate_api_key),
+    db: AsyncSession = Depends(get_db),
+):
+    tenant, api_key = auth
+    return await _proxy_request(request, "/admin/config", tenant, api_key, db)
+
+
+# ---------- Cloud provider endpoints ----------
+
+@router.get("/providers")
+async def list_providers(
+    request: Request,
+    auth: tuple[Tenant, ApiKey] = Depends(authenticate_api_key),
+    db: AsyncSession = Depends(get_db),
+):
+    tenant, api_key = auth
+    return await _proxy_request(request, "/providers/", tenant, api_key, db)
+
+
+@router.post("/providers/{provider_name}/detect")
+async def provider_detect(
+    request: Request,
+    provider_name: str,
+    image: UploadFile = File(...),
+    auth: tuple[Tenant, ApiKey] = Depends(authenticate_api_key),
+    db: AsyncSession = Depends(get_db),
+):
+    tenant, api_key = auth
+    image_bytes = await image.read()
+    return await _proxy_request(
+        request, f"/providers/{provider_name}/detect", tenant, api_key, db,
+        files={"image": (image.filename, image_bytes, image.content_type)},
+    )
+
+
+@router.post("/providers/{provider_name}/compare")
+async def provider_compare(
+    request: Request,
+    provider_name: str,
+    image1: UploadFile = File(...),
+    image2: UploadFile = File(...),
+    auth: tuple[Tenant, ApiKey] = Depends(authenticate_api_key),
+    db: AsyncSession = Depends(get_db),
+):
+    tenant, api_key = auth
+    img1_bytes = await image1.read()
+    img2_bytes = await image2.read()
+    return await _proxy_request(
+        request, f"/providers/{provider_name}/compare", tenant, api_key, db,
+        files={
+            "image1": (image1.filename, img1_bytes, image1.content_type),
+            "image2": (image2.filename, img2_bytes, image2.content_type),
+        },
+    )
+
+
+# ---------- Health (legacy, kept for backward compat) ----------
 
 @router.get("/health")
 async def health(
@@ -267,4 +369,4 @@ async def health(
     db: AsyncSession = Depends(get_db),
 ):
     tenant, api_key = auth
-    return await _proxy_request(request, "/health", tenant, api_key, db)
+    return await _proxy_request(request, "/admin/health", tenant, api_key, db)

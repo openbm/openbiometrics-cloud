@@ -27,7 +27,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="OpenBiometrics Cloud",
     description="SaaS API for OpenBiometrics — face recognition, liveness detection, document processing, and more.",
-    version="1.0.0",
+    version="0.3.0",
     lifespan=lifespan,
     docs_url="/docs",
     redoc_url="/redoc",
@@ -66,7 +66,7 @@ app.include_router(usage_router, prefix="/api")
 async def root():
     return {
         "service": "OpenBiometrics Cloud",
-        "version": "1.0.0",
+        "version": "0.3.0",
         "docs": "/docs",
         "status": "operational",
     }
